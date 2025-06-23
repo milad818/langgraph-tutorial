@@ -5,6 +5,7 @@ from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+import json
 
 
 load_dotenv()
@@ -49,7 +50,7 @@ agent = graph.compile()
 conversation_history = []
 
 user_input = input("Enter your message (or type 'exit' to quit): ")
-while user_input.lower() != "exit":
+while (user_input.lower() != "exit"):
     # Initialize the agent state with the user input
     conversation_history.append(HumanMessage(content=user_input))
     # agent_state = AgentState(messages=conversation_history)
@@ -57,6 +58,8 @@ while user_input.lower() != "exit":
     # Invoke the agent with the current state
     result = agent.invoke({"messages": conversation_history})
     # print(f"Agent response: {result['messages'][-1].content}")
+    # print(json.dumps(result, indent=2))
+    print(f"RESULT: {result}")
     
     conversation_history = result['messages']  # Update the conversation history with the latest messages
     

@@ -2,10 +2,5 @@ Your Conversation History:
 
 =============================
 
-User: Hi!
-AI: Hello! How can I assist you today?
-User: I am Milad.
-AI: Hi, Milad! It's nice to meet you. How can I help you today?
-User: What is your name?
-AI: I don't have a personal name, but you can call me Assistant. How can I assist you today, Milad?
+
 End of the conversation!
