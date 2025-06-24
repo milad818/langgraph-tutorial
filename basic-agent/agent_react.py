@@ -12,8 +12,9 @@ from langchain_core.tools import tool
 from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode
-from IPython.display import Image, display
 import io
+import json
+from pprint import pprint
 
 
 load_dotenv()
@@ -30,7 +31,17 @@ def add_numbers(a: int, b: int) -> int:
     """ Adds two numbers together. """
     return a + b
 
-tools = [add_numbers]
+@tool
+def subtract_numbers(a: int, b: int) -> int:
+    """ Subtracts two numbers together. """
+    return a - b
+
+@tool
+def multiple_numbers(a: int, b: int) -> int:
+    """ Multiplies two numbers together. """
+    return a * b
+
+tools = [add_numbers, subtract_numbers, multiple_numbers]  # List of tools that the agent can use   
 
 # llm = ChatOpenAI(
 #    model="gpt-4o",
@@ -53,6 +64,8 @@ llm = ChatOpenAI(
     top_p=0.9,  # Top-p sampling for controlling diversity  
     n=1,  # Number of responses to generate
 ).bind_tools(tools)  # Register the tools with the model
+
+
 
 def model_call(state: AgentState) -> AgentState:
     """ Process the current state of the agent and return the updated state. """
@@ -106,7 +119,6 @@ graph.add_edge("tools", "agent")  # After the tool call, go back to the agent no
 app = graph.compile()  # Compile the graph into an app
 
 
-
 # Assuming draw_mermaid_png() returns PNG bytes
 # Uncomment to display the graph as a Mermaid diagram
 # png_bytes = app.get_graph().draw_mermaid_png()
@@ -127,6 +139,9 @@ app = graph.compile()  # Compile the graph into an app
 
 
 def print_stream(stream):
+    print(f"Stream type: {type(stream)}")
+    # for i, item in enumerate(stream):
+    #     pprint(f"ITEM {i}: {item}") 
     for ms in stream:
         message = ms['messages'][-1]
         if isinstance(message, tuple):
@@ -134,5 +149,16 @@ def print_stream(stream):
         else:
             message.pretty_print()  # Pretty print the message if it's not a tuple 
         
-inputs = {"messages": [("user", "Hello, can you add 5 and 10?")]}  
-print_stream(app.stream(inputs, stream_mode="values"))  # Invoke the app with the inputs and print the stream
+# Tool Calls
+# inputs = {"messages": [("user", "Hello, can you add 5 and 10, multiply 30 and 2?")]}  
+# print_stream(app.stream(inputs, stream_mode="values"))  # Invoke the app with the inputs and print the stream
+# pprint(app.invoke(inputs, stream_mode="values"))  # Invoke the app with the inputs and print the stream
+
+# We have so far noticed it is able to handle tool calls and return the results of the calculations.
+# Additionally, Langgraph performs robustly to a degree that it can handles queries which do not need a tool 
+# and are integrated into the main query flow, such as "What is the capital of France?".
+# Let's try it and see what happens:
+
+# Cobinamtion of tool-calling and non-tool-calling queries.
+inputs = {"messages": [("user", "Hello, can you add 5 and 10, tell me what is the capital of France?")]}  
+print_stream(app.stream(inputs, stream_mode="values"))
