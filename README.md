@@ -1,6 +1,6 @@
-# LangGraph Tutorial Repository
+# LangGraph Tutorial
 
-A comprehensive tutorial series for learning LangGraph, the framework for building stateful, multi-actor applications with Large Language Models (LLMs). This repository contains hands-on examples ranging from simple "Hello World" agents to complex looping and conditional graphs.
+A comprehensive tutorial series for learning LangGraph, the framework for building stateful, multi-actor applications with Large Language Models (LLMs). This repository contains hands-on examples ranging from simple "Hello World" agents to complex looping and conditional graphs which is mainly inspired by [LangGraph Complete Course for Beginners](https://www.youtube.com/watch?v=jGg_1h0qzaM&list=PLJ--RI9AhXQLsIsAiM4UWJjI6bkMoIJwX&index=24&t=10879s) introduced by freeCodeCamp on their YouTube channel.
 
 ## 📖 Table of Contents
 
