@@ -22,25 +22,25 @@ LangGraph is a library for building stateful, multi-actor applications with LLMs
 
 ```
 langgraph-tutorial/
-├── 📓 tutorial-notebooks (Sequential Learning Path)
-│   ├── 00_hello_world_agent.ipynb          # Basic agent introduction
-│   ├── 01_multiple_input_graph.ipynb       # Handling multiple inputs
+├── tutorial-notebooks/
+│   ├── 00_hello_world_agent.ipynb
+│   ├── 01_multiple_input_graph.ipynb
 │   ├── 01ex_singlenode_multioperational_graph.ipynb
 │   ├── 02_multiplenode_sequential_graph.ipynb
 │   ├── 02ex_multiplenode_sequential_graph.ipynb
-│   ├── 03_conditional_graph.ipynb          # Dynamic routing logic
+│   ├── 03_conditional_graph.ipynb
 │   ├── 03ex_conditional_graph.ipynb
-│   └── 04_looping_graph.ipynb              # Iterative workflows
-├── 🤖 basic-agent/                         # Practical agent implementations
-│   ├── agent_bot.py                        # Basic chatbot agent
-│   ├── agent_doc_drafter.py               # Document drafting agent
-│   ├── agent_rag.py                       # RAG (Retrieval-Augmented Generation)
-│   ├── agent_react.py                     # ReAct pattern implementation
-│   ├── agent_with_memory.py               # Stateful agent with memory
-│   ├── data/                              # Sample data files
-│   ├── images/                            # Agent architecture diagrams
-│   └── conversation_history.txt           # Sample conversation logs
-└── README.md                              # This file
+│   └── 04_looping_graph.ipynb
+├── basic-agent/
+│   ├── agent_bot.py
+│   ├── agent_doc_drafter.py
+│   ├── agent_rag.py
+│   ├── agent_react.py
+│   ├── agent_with_memory.py
+│   ├── data/
+│   ├── images/
+│   └── conversation_history.txt
+├── README.md
 ```
 
 ## 📚 Tutorial Notebooks
@@ -115,12 +115,13 @@ The `basic-agent/` directory contains practical implementations:
 
 4. **Start with the tutorial notebooks:**
    ```bash
+   cd tutorial-notebooks
    jupyter notebook 00_hello_world_agent.ipynb
    ```
 
 5. **Explore the basic agents:**
    ```bash
-   cd basic-agent
+   cd ../basic-agent
    python agent_bot.py
    ```
 
