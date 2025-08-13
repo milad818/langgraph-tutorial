@@ -22,7 +22,7 @@ LangGraph is a library for building stateful, multi-actor applications with LLMs
 
 ```
 langgraph-tutorial/
-├── 📓 Tutorial Notebooks (Sequential Learning Path)
+├── 📓 tutorial-notebooks (Sequential Learning Path)
 │   ├── 00_hello_world_agent.ipynb          # Basic agent introduction
 │   ├── 01_multiple_input_graph.ipynb       # Handling multiple inputs
 │   ├── 01ex_singlenode_multioperational_graph.ipynb
