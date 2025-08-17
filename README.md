@@ -40,6 +40,7 @@ langgraph-tutorial/
 │   ├── data/
 │   ├── images/
 │   └── conversation_history.txt
+├── LICENSE
 ├── README.md
 ```
 
